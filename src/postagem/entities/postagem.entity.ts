@@ -1,7 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity({ name: 'db_postagens' }) // Indicando que a classe é uma model e que ira converter num banco de dados
+@Entity({ name: 'tb_postagens' }) // Indicando que a classe é uma model e que ira converter num banco de dados
 export class Postagem {
   @PrimaryGeneratedColumn() // Chave primaria auto incremental
   id: number;
