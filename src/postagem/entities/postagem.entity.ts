@@ -1,20 +1,34 @@
+// postagem.entity.ts
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  JoinColumn,
+} from 'typeorm';
+import { Tema } from '../../tema/entities/tema.entity';
 
-@Entity({ name: 'tb_postagens' }) // Indicando que a classe é uma model e que ira converter num banco de dados
+@Entity({ name: 'tb_postagens' })
 export class Postagem {
-  @PrimaryGeneratedColumn() // Chave primaria auto incremental
+  @PrimaryGeneratedColumn()
   id: number;
 
-  @IsNotEmpty() // é igual o nut null no sql e regra do mysql - not null
+  @IsNotEmpty()
   @Column({ length: 100, nullable: false })
   titulo: string;
 
-  @IsNotEmpty() // é igual o nut null no sql e regra do mysql - not null
+  @IsNotEmpty()
   @Column({ length: 1000, nullable: false })
   texto: string;
 
-
   @UpdateDateColumn()
   data: Date;
+
+  @ManyToOne(() => Tema, (tema) => tema.postagem, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'tema_id' })
+  tema: Tema;
 }
