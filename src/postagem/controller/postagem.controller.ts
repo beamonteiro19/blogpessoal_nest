@@ -48,7 +48,7 @@ export class PostagemController {
   @Put()
   @HttpCode(HttpStatus.OK)
   update(@Body() postagem: Postagem): Promise<Postagem> {
-    return this.postagemService.create(postagem);
+    return this.postagemService.update(postagem);
   }
 
   @Delete('/:id')
