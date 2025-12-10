@@ -20,6 +20,7 @@ export class PostagemService {
     return await this.postagemRepository.find({
       relations: {
         tema: true,
+        usuario: true,
       },
     });
   }
@@ -31,6 +32,7 @@ export class PostagemService {
       },
       relations: {
         tema: true,
+        usuario: true,
       },
     });
     //se a postagem for nula, vai cair dentro dessa estrutura condicional
@@ -43,6 +45,10 @@ export class PostagemService {
     return await this.postagemRepository.find({
       where: {
         titulo: ILike(`%${titulo}`),
+      },
+      relations: {
+        tema: true,
+        usuario: true,
       },
     });
   }
