@@ -12,3 +12,5 @@ VALUES (current_timestamp(), 'Texto da postagem 2', 'Postagem 2');
 
 SELECT * FROM tb_postagens;
 SELECT * FROM tb_usuarios;
+
+DROP DATABASE db_blogpessoal;
